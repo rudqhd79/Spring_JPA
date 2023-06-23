@@ -1,0 +1,17 @@
+package jpabook.jpashop;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class Hello {
+	
+	public static void main(String[] args) {
+		
+		Hello hello = new Hello();
+		hello.setData("hello");
+		
+	}
+	
+}

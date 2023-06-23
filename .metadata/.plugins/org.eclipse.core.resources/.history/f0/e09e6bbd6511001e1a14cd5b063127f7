@@ -1,0 +1,27 @@
+package jpabook.jpashop;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+public class MemberRepositoryTest {
+
+	@Autowired
+	MemberRepository memberRepository;
+	
+	@Test
+	public void testMember() throws Exception {
+		// given
+		Member member = new Member();
+		member.setUsername("memberA");
+		// when
+		Long saveId = memberRepository.save(member);
+		Member findMebmer = memberRepository.find(saveId);
+		
+		
+		// then
+	}
+	
+}
