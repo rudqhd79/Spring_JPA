@@ -1,0 +1,40 @@
+package jpabook.jpashop.domain.item;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+import jpabook.jpashop.domain.Category;
+import lombok.Getter;
+import lombok.Setter;
+
+// 추상클래스
+@Entity
+@Getter
+@Setter
+//상속된 객체들이 있어 사용한다
+// InheritanceType 종류는
+// 1. Joined (정교한 스타일 사용)
+// 2. Single_table (한 테이블에 다 때려박는 것)
+// 3. 
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+public abstract class Item {
+
+	@Id
+	@GeneratedValue
+	@Column(name = "item_id")
+	private Long id;
+	
+	private String name;
+	
+	private int price;
+	
+	private int stockQuantity;
+	
+	/* private List<Category> categories = new ArrayList<>(); */
+}

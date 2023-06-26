@@ -1,0 +1,25 @@
+package jpabook.jpashop;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class JpashopApplication {
+	
+	// Entity를 생성 할 때는 Setter를 열어두지 말자
+	// Data Modify를 쉽게 해버리면 유지보수가 어려워 나중에 리팩토링으로 Setter 제거
+	// 모든 연관관계는 무조건 fetch = fetchType.LAZY로 하자
+	// @ManyToOne은 fetch가 Eager
+	// @OneToMany는 fetch가 Lazy
+	
+	public static void main(String[] args) {
+		
+		Hello hello = new Hello();
+		hello.setData("Hello World");
+		String data = hello.getData();
+		System.out.println("data = " + data);
+		
+		SpringApplication.run(JpashopApplication.class, args);
+	}
+
+}

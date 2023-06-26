@@ -1,0 +1,15 @@
+package jpabook.jpashop.domain;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+
+public class Category {
+
+	@Id
+	@Column(name = "category_id")
+	@GeneratedValuee
+	private Long id;
+	
+	
+}

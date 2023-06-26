@@ -1,0 +1,35 @@
+package jpabook.jpashop.domain.item;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+import jpabook.jpashop.domain.Category;
+import lombok.Getter;
+import lombok.Setter;
+
+// 추상클래스
+@Entity
+@Getter
+@Setter
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)	// 상속이기 때문에 사용한다
+public abstract class Item {
+
+	@Id
+	@GeneratedValue
+	@Column(name = "item_id")
+	private Long id;
+	
+	private String name;
+	
+	private int price;
+	
+	private int stockQuantity;
+	
+	/* private List<Category> categories = new ArrayList<>(); */
+}

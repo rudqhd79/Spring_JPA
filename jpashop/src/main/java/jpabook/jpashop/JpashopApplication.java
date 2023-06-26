@@ -5,7 +5,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class JpashopApplication {
-
+	
+	// Entity를 생성 할 때는 Setter를 열어두지 말자
+	// Data Modify를 쉽게 해버리면 유지보수가 어려워 나중에 리팩토링으로 Setter 제거
+	// 모든 연관관계는 무조건 fetch = fetchType.LAZY로 하자
+	// @ManyToOne은 fetch가 Eager (반드시 Lazy로 해야한다)
+	// Eager로 설정 시 jpql로 repository를 사용하면 100 + 1(첫 실행) 결과물이 생성된다
+	// ToOne으로 끝나는 관계는  fetchType.LAZY 
+	
 	public static void main(String[] args) {
 		
 		Hello hello = new Hello();
