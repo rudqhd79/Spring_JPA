@@ -49,7 +49,6 @@ public class MemberServiceTest {
 		member2.setName("kim");
 		
 		// when
-		
 		// 예외가 발생해야 한다
 		memberService.join(member1);
 		try {
