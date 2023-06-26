@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="MemberServiceTest" project="jpashop" tests="2" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="jpabook.jpashop.service.MemberServiceTest" time="0.637" displayname="MemberServiceTest" uniqueid="[engine:junit-jupiter]/[class:jpabook.jpashop.service.MemberServiceTest]">
+    <testcase name="join" classname="jpabook.jpashop.service.MemberServiceTest" time="0.629" displayname="join()" uniqueid="[engine:junit-jupiter]/[class:jpabook.jpashop.service.MemberServiceTest]/[method:join()]"/>
+    <testcase name="duplicate" classname="jpabook.jpashop.service.MemberServiceTest" time="0.006" displayname="duplicate()" uniqueid="[engine:junit-jupiter]/[class:jpabook.jpashop.service.MemberServiceTest]/[method:duplicate()]"/>
+  </testsuite>
+</testrun>

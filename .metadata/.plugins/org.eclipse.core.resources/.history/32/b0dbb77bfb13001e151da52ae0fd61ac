@@ -1,0 +1,12 @@
+package jpabook.jpashop.service;
+
+import org.springframework.stereotype.Service;
+
+import jpabook.jpashop.repository.MemberRepository;
+
+@Service
+public class MemberService {
+
+	private MemberRepository memberRepository;
+	
+}

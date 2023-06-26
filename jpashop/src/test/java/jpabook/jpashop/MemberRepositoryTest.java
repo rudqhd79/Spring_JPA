@@ -7,6 +7,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
+import jpabook.jpashop.domain.Member;
+import jpabook.jpashop.repository.MemberRepository;
+
 
 @SpringBootTest
 public class MemberRepositoryTest {
@@ -23,15 +26,15 @@ public class MemberRepositoryTest {
 	public void testMember() throws Exception {
 		// given
 		Member member = new Member();
-		member.setUsername("memberA");
+		member.setName("memberA");
 		
 		// when
 		Long saveId = memberRepository.save(member);
-		Member findMebmer = memberRepository.find(saveId);
+		Member findMebmer = memberRepository.findOne(saveId);
 		
 		// then
 		Assertions.assertThat(findMebmer.getId().equals(member.getId()));
-		Assertions.assertThat(findMebmer.getUsername().equals(member.getUsername()));
+		Assertions.assertThat(findMebmer.getName().equals(member.getName()));
 		Assertions.assertThat(findMebmer).equals(member);
 	}
 	

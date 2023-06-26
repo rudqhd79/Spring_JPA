@@ -1,0 +1,10 @@
+package jpabook.jpashop.repository;
+
+import org.springframework.data.querydsl.binding.QuerydslPredicate;
+import org.springframework.stereotype.Repository;
+
+@Repository
+@QuerydslPredicate
+public class MemberRepository {
+
+}

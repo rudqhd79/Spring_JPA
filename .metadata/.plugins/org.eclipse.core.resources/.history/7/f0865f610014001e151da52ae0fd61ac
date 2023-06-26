@@ -1,0 +1,14 @@
+package jpabook.jpashop.service;
+
+public class MemberServiceTest {
+
+	@test
+	public void join() throws Exception {
+		// given
+		
+		// when
+		
+		// then
+	}
+	
+}

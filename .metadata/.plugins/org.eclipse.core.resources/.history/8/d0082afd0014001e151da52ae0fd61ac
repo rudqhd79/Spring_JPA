@@ -1,0 +1,25 @@
+package jpabook.jpashop.service;
+
+import org.junit.jupiter.api.Test;
+
+public class MemberServiceTest {
+
+	@Test
+	public void join() throws Exception {
+		// given
+		
+		// when
+		
+		// then
+	}
+	
+	@test
+	public void duplicate() throws Exception {
+		// given
+		
+		// when
+		
+		// then
+	}
+	
+}

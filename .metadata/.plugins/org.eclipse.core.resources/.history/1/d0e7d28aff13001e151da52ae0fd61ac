@@ -1,0 +1,49 @@
+package jpabook.jpashop.repository;
+
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jpabook.jpashop.domain.Member;
+import lombok.RequiredArgsConstructor;
+
+@Repository
+@RequiredArgsConstructor	// final 필드로 생성자를 만들어준다
+public class MemberRepository {
+	
+	// em은 @autowired랑 다르게 @persistanceContext로 반드시 해줘야 한다
+	// 영속성(DB와 연결 가능한 객체로 만들어 준다)
+	@PersistenceContext
+	private final EntityManager em;
+
+	/*
+	 * public MemberRepository (EntityManager em) { this.em = em; }
+	 */
+	
+	// Member를 영속성 객체로 만듦
+	// 전에 했던 프로젝트는 service를 이용하여 interface repository에서 바로 저장이 되었다
+	// repository를 통해 바로 영속성으로 만든다 (DB Insert)
+	public void save(Member member) {
+		em.persist(member);
+	}
+	
+	// Member의 id를 찾음
+	public Member findOne(Long id) {
+		return em.find(Member.class, id);
+	}
+	
+	// jpql사용 (대상이 Table 아닌 Entity)
+	public List<Member> findAll() {
+		return em.createQuery("select m from Member m", Member.class)
+						.getResultList();
+	}
+	
+	public List<Member> findByName(String name) {
+		return em.createQuery("select m from Member m where m.name = :name", Member.class)
+				.setParameter("name", name)
+				.getResultList();
+	}
+	
+}

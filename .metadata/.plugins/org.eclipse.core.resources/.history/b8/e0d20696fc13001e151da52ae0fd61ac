@@ -1,0 +1,31 @@
+package jpabook.jpashop.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import jpabook.jpashop.domain.Member;
+import jpabook.jpashop.repository.MemberRepository;
+
+@Service
+public class MemberService {
+
+	@Autowired
+	private MemberRepository memberRepository;
+	
+	// 회원가입
+	public Long join (Member member) {
+		// 중복된 회원 인지?
+		validateDuplicateMember(member);
+		// repository를 통해 회원정보 insert
+		memberRepository.save(member);
+		// return을 통해 id를 확인하여 로그기록 남김
+		return member.getId();
+	}
+	
+	// 중복 확인
+	private void validateDuplicateMember (Member member) {
+		memberRepository.findByName(member.getName());
+	}
+	
+	// 회원 전체 조회
+}
