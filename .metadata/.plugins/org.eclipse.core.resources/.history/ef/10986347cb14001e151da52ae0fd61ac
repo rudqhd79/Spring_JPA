@@ -1,0 +1,13 @@
+package jpabook.jpashop.repository;
+
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.querydsl.QuerydslPredicateExecutor;
+
+import jpabook.jpashop.domain.Member;
+
+public interface MemberRepository2 extends JpaRepository<Member, Long>,
+															QuerydslPredicateExecutor<Member> {
+	Member findByMemberId(Long id);
+}

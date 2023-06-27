@@ -28,8 +28,6 @@ public class OrderRepository {
 	@Autowired
 	private final EntityManager em;
 	
-	JpaQueryMethodFactory factory;
-
 	// Insert
 	public void save(Order order) {
 		em.persist(order);
@@ -97,5 +95,7 @@ public class OrderRepository {
 		TypedQuery<Order> query = em.createQuery(cq).setMaxResults(1000); // 최대 1000건
 		return query.getResultList();
 	}
+	
+	// 쿼리 DSL을 사용하여 작성해보겠다
 	
 }
