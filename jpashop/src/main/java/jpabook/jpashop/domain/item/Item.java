@@ -49,7 +49,7 @@ public abstract class Item {
 	
 	// 비즈니스 로직
 	public void addStock(int quantity) {
-		this.stockQuantity = quantity;
+		this.stockQuantity += quantity;
 	}
 	
 	// remove Stock

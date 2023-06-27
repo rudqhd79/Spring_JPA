@@ -54,6 +54,8 @@ public class OrderItem {
 	// 비즈니스 로직
 	// 주문 취소 (재고 수량 파악)
 	public void cancel() {
+		// 보통은 Entity.get**을 하지만 바로get을 이용하여 void 메소드에 적용 할 수 있다
+		// void 메소드 들의 통신은 이렇게 진행되는가 보다
 		getItem().addStock(count);
 	}
 	

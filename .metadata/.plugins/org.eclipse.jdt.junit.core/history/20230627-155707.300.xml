@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="OrderServiceTest" project="jpashop" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="jpabook.jpashop.service.OrderServiceTest" time="0.362">
+    <testcase name="상품주문_재고수량초과" classname="jpabook.jpashop.service.OrderServiceTest" time="0.279"/>
+    <testcase name="상품주문" classname="jpabook.jpashop.service.OrderServiceTest" time="0.077"/>
+    <testcase name="주문취소" classname="jpabook.jpashop.service.OrderServiceTest" time="0.004"/>
+  </testsuite>
+</testrun>
