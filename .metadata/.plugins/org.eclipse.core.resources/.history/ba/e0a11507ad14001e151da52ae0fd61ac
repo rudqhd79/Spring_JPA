@@ -1,0 +1,12 @@
+package jpabook.jpashop.repository;
+
+import jakarta.persistence.EntityManager;
+import lombok.RequiredArgsConstructor;
+
+@Repository
+@RequiredArgsConstructor
+public class OrderRepository {
+
+	private final EntityManager em;
+	
+}

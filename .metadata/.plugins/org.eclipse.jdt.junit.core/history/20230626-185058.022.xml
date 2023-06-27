@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="MemberServiceTest" project="jpashop" tests="2" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="jpabook.jpashop.service.MemberServiceTest" time="0.782" displayname="MemberServiceTest" uniqueid="[engine:junit-jupiter]/[class:jpabook.jpashop.service.MemberServiceTest]">
+    <testcase name="중복_회원_예외" classname="jpabook.jpashop.service.MemberServiceTest" time="0.767" displayname="중복_회원_예외()" uniqueid="[engine:junit-jupiter]/[class:jpabook.jpashop.service.MemberServiceTest]/[method:중복_회원_예외()]"/>
+    <testcase name="회원가입" classname="jpabook.jpashop.service.MemberServiceTest" time="0.014" displayname="회원가입()" uniqueid="[engine:junit-jupiter]/[class:jpabook.jpashop.service.MemberServiceTest]/[method:회원가입()]"/>
+  </testsuite>
+</testrun>

@@ -1,0 +1,21 @@
+package jpabook.jpashop.exception;
+
+// RuntimeException을 상속하여 객체 자체를 에러로 만듦
+public class NotEnoughStockException extends RuntimeException {
+	
+	// Runtime 시 발생 할 오류를 생성자를 OverLoad하여 사용한다
+	public NotEnoughStockException() {
+	}
+
+	public NotEnoughStockException(String message) {
+		super(message);
+	}
+
+	public NotEnoughStockException(String message, Throwable cause) {
+		super(message, cause);
+	}
+
+	public NotEnoughStockException(Throwable cause) {
+		super(cause);
+	}
+}

@@ -1,0 +1,11 @@
+package jpabook.jpashop.repository;
+
+import lombok.RequiredArgsConstructor;
+
+@Repository
+@RequiredArgsConstructor
+public class OrderRepository {
+
+	private final EntityManager em;
+	
+}

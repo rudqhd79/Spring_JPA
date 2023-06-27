@@ -17,13 +17,16 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Table(name = "orders")
 @Getter
 @Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Order {
 
 	@Id
@@ -36,6 +39,7 @@ public class Order {
 	private Member member;
 	
 	// cascade = CascadeType.ALL은 현재 Entity(Order)를 저장하면 orderItems도 저장된다
+	// cascade는 Order가 현재 Delivery와 OrderItem 객체의 주인이기 때문에 Order에 적용가능하다
 	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
 	private List<OrderItem> orderItems = new ArrayList<>();
 	
@@ -78,4 +82,42 @@ public class Order {
 	 * 
 	 * member.getOrders().add(order); order.setMember(member); }
 	 */
+	
+	// 생성 메서드
+	public static Order createOrder(Member member, Delivery delivery, OrderItem... orderItems) {
+		Order order = new Order();
+		order.setMember(member);
+		order.setDelivery(delivery);
+		
+		for (OrderItem orderItem : orderItems) {
+			order.addOrderItem(orderItem);
+		}
+		order.setStatus(OrderStatus.ORDER);
+		order.setOrderDate(LocalDateTime.now());
+		return order;
+	}
+	
+	// 비즈니스 로직
+	// Cancel Order
+	public void cancel() {
+		if (delivery.getStatus() == DeliveryStatus.COMP) {
+			throw new IllegalStateException("이미 배송이 완료된 상품입니다.");
+		}
+		
+		this.setStatus(OrderStatus.CANCEL);
+		for (OrderItem orderItem : orderItems) {
+			orderItem.cancel();
+		}
+	}
+	
+	// 조회 로직
+	// 전체 주문 가격 (select)
+	public int getTotalPrice() {
+		int totalPrice = 0;
+		for (OrderItem orderItem : orderItems) {
+			totalPrice += orderItem.getTotalPrice();
+		}
+		return totalPrice;
+	}
+	
 }

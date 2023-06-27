@@ -1,0 +1,28 @@
+package jpabook.jpashop.domain;
+
+import jakarta.persistence.Embeddable;
+import lombok.Getter;
+// 내장될 수 있는 객체
+@Embeddable
+@Getter
+public class Address {
+
+	private String city;
+	
+	private String street;
+	
+	private String zipcode;
+	
+	// Embedded Entity의 생성자는 protected로 생성해야 한다
+	// 내장 Entity이기 때문에 패키지 안에서 사용해야 가독성이 좋다
+	
+	 protected Address() {
+	 
+	 }
+	  
+	  public Address (String city, String street, String zipcode) {
+	  this.city = city;
+	  this.street = street;
+	  this.zipcode = zipcode;
+	  }
+}

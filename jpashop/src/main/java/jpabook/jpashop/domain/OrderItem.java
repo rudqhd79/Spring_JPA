@@ -9,13 +9,18 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jpabook.jpashop.domain.item.Item;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class OrderItem {
+	
+	// JPA에서 protected는 사용하지 않는다는 의미
 
 	@Id
 	@GeneratedValue
@@ -34,4 +39,25 @@ public class OrderItem {
 	
 	private int count; // 주문수량
 
+	
+	// 생성 메소드
+	public static OrderItem createOrderItem(Item item, int orderPrice, int count) {
+		OrderItem orderItem = new OrderItem();
+		orderItem.setItem(item);
+		orderItem.setOrderPrice(orderPrice);
+		orderItem.setCount(count);
+		// 남은 재고 수량 표시
+		item.removeStock(count);
+		return orderItem;
+	}
+	
+	// 비즈니스 로직
+	// 주문 취소 (재고 수량 파악)
+	public void cancel() {
+		getItem().addStock(count);
+	}
+	
+	public int getTotalPrice() {
+		return getOrderPrice() * count;
+	}
 }

@@ -1,0 +1,34 @@
+package jpabook.jpashop.service;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import jpabook.jpashop.domain.Member;
+import jpabook.jpashop.domain.item.Item;
+import jpabook.jpashop.repository.ItemRepository;
+import jpabook.jpashop.repository.MemberRepository;
+import jpabook.jpashop.repository.OrderRepository;
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+@Transactional(readOnly = true)
+public class OrderService {
+
+	private final OrderRepository orderRepository;
+	private final ItemRepository itemRepository;
+	private final MemberRepository memberRepository;
+	
+	// 주문
+	// 어떤 회원이 어떤 아이템을 몇개 주문했는지?
+	@Transactional
+	public Long order(Long memberId, Long itemId, int count) {
+		Member member = memberRepository.findOne(memberId);
+		Item item = itemRepository.findOne(itemId);
+	}
+	
+	// 취소
+	
+	// 검색
+	
+}
