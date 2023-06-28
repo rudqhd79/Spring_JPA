@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 @Repository
 @RequiredArgsConstructor
 public class ItemRepository {
-
+	
 	private final EntityManager em;
 	
 	// 아이템이 DB에 신규등록 OR 기존등록

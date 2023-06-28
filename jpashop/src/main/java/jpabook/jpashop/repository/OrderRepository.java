@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
@@ -25,7 +26,6 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class OrderRepository {
 
-	@Autowired
 	private final EntityManager em;
 	
 	// Insert
