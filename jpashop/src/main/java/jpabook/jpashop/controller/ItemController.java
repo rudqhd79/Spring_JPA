@@ -66,7 +66,8 @@ public class ItemController {
 	// ModelAttribute 어노테이션은 th:object의 값을 불러 올 때 쓴다
 	@PostMapping("items/{itemId}/edit")
 	public String updateItem(@PathVariable("itemId") Long itemId, @ModelAttribute("form") BookForm form) {
-		Book book = new Book();
+		
+		 Book book = new Book();
 		 book.setId(form.getId());
 		 book.setName(form.getName());
 		 book.setPrice(form.getPrice());

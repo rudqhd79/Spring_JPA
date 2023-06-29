@@ -28,6 +28,7 @@ public class OrderRepository {
 
 	private final EntityManager em;
 	
+	
 	// Insert
 	public void save(Order order) {
 		em.persist(order);
@@ -38,6 +39,7 @@ public class OrderRepository {
 		return em.find(Order.class, id);
 	}
 
+	// queryDSL이 없으면 이렇게 불편하구나....
 	// Select
 	// 주문내역에는 검색기능이 있어서 동적쿼리가 필요하다 (너무 복잡하다)
 	public List<Order> findAllByString(OrderSearch orderSearch) {

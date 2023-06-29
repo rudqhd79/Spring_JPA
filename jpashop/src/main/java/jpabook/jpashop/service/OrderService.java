@@ -10,6 +10,7 @@ import jpabook.jpashop.domain.Delivery;
 import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.domain.Order;
 import jpabook.jpashop.domain.OrderItem;
+import jpabook.jpashop.domain.OrderSearch;
 import jpabook.jpashop.domain.item.Item;
 import jpabook.jpashop.repository.ItemRepository;
 import jpabook.jpashop.repository.MemberRepository;
@@ -24,7 +25,7 @@ public class OrderService {
 	private final OrderRepository orderRepository;
 	private final ItemRepository itemRepository;
 	private final MemberRepository memberRepository;
-	
+
 	// 주문
 	// 어떤 회원이 어떤 아이템을 몇개 주문했는지?
 	@Transactional
@@ -32,38 +33,39 @@ public class OrderService {
 		// 엔티티 조회 (ID로 조회)
 		Member member = memberRepository.findOne(memberId);
 		Item item = itemRepository.findOne(itemId);
-		
+
 		// 배송정보 생성
 		Delivery delivery = new Delivery();
 		delivery.setAddress(member.getAddress());
-		
+
 		// 주문상품 생성
 		OrderItem orderItem = OrderItem.createOrderItem(item, item.getPrice(), count);
-		
-		/* OrderItem orderitem = new OrderItem() <== 새로운 객체 생성은 하나면 충분하다 
-		 * 또다른 생성을 막기위해 OrderItem Entity에 생성자를 protected로 해준다*/
-		
+
+		/*
+		 * OrderItem orderitem = new OrderItem() <== 새로운 객체 생성은 하나면 충분하다 또다른 생성을 막기위해
+		 * OrderItem Entity에 생성자를 protected로 해준다
+		 */
+
 		// 주문 생성
 		Order order = Order.createOrder(member, delivery, orderItem);
-		
+
 		// 주문 저장
 		// Order가 현재 주인인 상태 (Delivery, OrderItem persist를 같이한다)
 		// cascade를 안쓰면 3객체 (Order, Delivery, OrderItem)를 같이 save 해야한다
 		orderRepository.save(order);
-		
+
 		return order.getId();
 	}
-	
+
 	// 취소
 	@Transactional
 	public void cancelOrder(Long orderId) {
 		Order order = orderRepository.findOne(orderId);
 		order.cancel();
 	}
-	
+
 	// 검색
-	/*
-	 * public List<Order> findOrders(OrderSearch orderSearch) { return
-	 * orderRepository.findAll(orderSearch); }
-	 */
+	public List<Order> findOrders(OrderSearch orderSearch) {
+		return orderRepository.findAllByString(orderSearch);
+	}
 }
