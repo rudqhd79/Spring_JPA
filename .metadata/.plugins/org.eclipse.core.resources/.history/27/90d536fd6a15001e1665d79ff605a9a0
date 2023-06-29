@@ -1,0 +1,19 @@
+package jpabook.jpashop.controller;
+
+import org.springframework.stereotype.Controller;
+
+import ch.qos.logback.core.model.Model;
+import jpabook.jpashop.service.MemberService;
+import lombok.RequiredArgsConstructor;
+
+@Controller
+@RequiredArgsConstructor
+public class MemberController {
+
+	private final MemberService memberService;
+	
+	public String createForm(Model model) {
+		
+	}
+	
+}

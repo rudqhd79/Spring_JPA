@@ -1,0 +1,9 @@
+package jpabook.jpashop.controller;
+
+import lombok.RequiredArgsConstructor;
+
+@Controller
+@RequiredArgsConstructor
+public class OrderController {
+
+}

@@ -23,6 +23,7 @@ public class ItemRepository {
 			em.persist(item);
 		} else {
 			// 첫 등록 이후 (merge는 강제 update)
+			// service에서 parameter(메소드 변수)로 넘어온 값이 DB에서 싹 다 바뀐다 (실무에서는 잘 안쓴다)
 			em.merge(item);
 		}
 	}

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import jpabook.jpashop.domain.item.Book;
 import jpabook.jpashop.domain.item.Item;
 import jpabook.jpashop.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +21,17 @@ public class ItemService {
 	@Transactional
 	public void saveItem(Item item) {
 		itemRepository.save(item);
+	}
+	
+	// 준영속상태란? (이미 DB에 한번 다녀 온 객체)
+	@Transactional
+	public Item updateItem(Long itemId, String name, int price, int stockQuantity) {
+		Item findItem = itemRepository.findOne(itemId);
+		findItem.setPrice(price);
+		findItem.setName(name);
+		findItem.setStockQuantity(stockQuantity);
+		// repository에 save를 하지 않아도 준영속상태이기 때문에 알아서 DB에 값이 바뀐다
+		return findItem;
 	}
 	
 	public List<Item> findItems() {
