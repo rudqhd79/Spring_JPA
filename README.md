@@ -10,3 +10,4 @@
 <p>CSS</p>
 <p>JS</p>
 <p>** gradle 사용 시 오류가 나면 gradle -> refresh gradle project를 해준다 **</p>
+<p>Controller에는 데이터 변경값들인 DTO를 생성하지 않고 진행했다 (간단한 예제)</p>
